@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up Page Dictionary</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+        <div class="heading-container">
+            <h1>Dictionary App</h1>
+        </div>
+        <div class="container-wrapper">
+            <!-- Login Form -->
+            <div class="container" id="loginForm">
+                <h2>Login</h2>
+                <input type="email" id="login-email" name="email" placeholder="Email" required><br>
+                <input type="password" id="login-password" name="password" placeholder="Password" required><br>
+                <input type="submit" value="Login" id="login" name="login_submit">
+            </div>
+    
+            <!-- Sign Up Form -->
+            <div class="container" id="signupForm">
+                <h2>Sign Up</h2>
+                <input type="text" id="signup-FullName" name="FullName" placeholder="Enter Full Name" required>
+                <input type="text" id="signup-username" name="username" placeholder="Username" required>
+                <input type="email" id="signup-email" name="email" placeholder="Email" required>
+                <input type="tel" id="signup-phone" name="phone" placeholder="PhoneNumber" required>
+                <input type="password" id="signup-password" name="password" placeholder="Password" required>
+                <label for="signup-gender">Gender:</label>
+                <select id="signup-gender" name="gender" required>
+                    <option value="">Select...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
+                <label for="signup-dob">Date of Birth:</label>
+                <input type="date" id="signup-dob" name="dob" required>
+                <input type="submit" value="Sign Up" id="signup" name="signup_submit">
+            </div>
+            
+            <!-- User Details Form -->
+            <div class="container" id="userForm">
+                <h2>Complete your profile</h2>
+                <form id="profileForm">
+                <input type="text" id="g-fullName" name="FullName" placeholder="Enter Full Name" required>
+                <input type="text" id="g-username" name="username" placeholder="Username" required>
+                <input type="email" id="g-email" name="email" placeholder="Email" required>
+                <input type="tel" id="g-phone" name="phone" placeholder="PhoneNumber" required>
+                <label for="g-gender">Gender:</label>
+                <select id="g-gender" name="gender" required>
+                    <option value="">Select...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
+                <label for="g-dob">Date of Birth:</label>
+                <input type="date" id="g-dob" name="dob" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+    
+            <!-- Reset Password Form -->
+            <div class="container" id="passwordReset">
+                <h2>Reset Your Password</h2>
+                <input type="email" id="reset-email" name="email" placeholder="Enter valid email" required>
+                <input type="submit" value="Send Reset Mail" id="resetPassword" name="reset_Password">
+            </div>
+    
+            <div class="toggle-buttons">
+                <div class="loginsignup">
+                    <button onclick="showForm('loginForm')">Login</button>
+                    <button onclick="showForm('signupForm')">Sign Up</button>
+                </div>
+                <button id="googlesignin">Sign Up with Google</button>
+                <button onclick="showForm('passwordReset')">Forgot Password?</button>
+            </div>
+        </div>
+        <div id="messageBox" class="message-box">
+            <div class="message-content">   
+                <h2 id="messageText">Message</h2>
+                <button class="ok-button">OK</button>
+            </div>
+        </div>
+        
+        <script type="module" src="authentication.js"></script>
+        <script>
+            function showForm(formId) {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('signupForm').style.display = 'none';
+                document.getElementById('passwordReset').style.display = 'none';
+                document.getElementById('userForm').style.display = 'none';
+                document.getElementById(formId).style.display = 'block';
+            }
+
+        
+        showForm('loginForm');
+            const bgImages = ["image1.png", "image2.png", "image3.png"];
+            let currentIndex = 0;
+            let intervalId;
+            
+            function updateBackground() {
+                const width = window.innerWidth;
+            
+                if (width < 560) {
+                    console.log(`Width: ${width}`);
+                    document.body.style.backgroundImage = 'url("Untitled.png")';
+                    
+                    if (intervalId) {
+                        clearInterval(intervalId);
+                        intervalId = null;
+                    }
+                } else {
+                    document.body.style.backgroundImage = `url(${bgImages[currentIndex]})`;
+                    
+                    if (!intervalId) {
+                        intervalId = setInterval(() => {
+                            currentIndex = (currentIndex + 1) % bgImages.length;
+                            document.body.style.backgroundImage = `url(${bgImages[currentIndex]})`;
+                        }, 3000);
+                    }
+                }
+            }
+            
+            updateBackground();
+            window.addEventListener('resize', updateBackground);
+            
+    </script>
+</body>
+</html>

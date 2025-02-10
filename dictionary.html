@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary and Thesaurus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dictionary.css">
+</head>
+<body>
+    <h1 id="dic">Dictionary</h1>
+    <div class="header">
+        <h1 id="user">Welcome, User!</h1>
+        <button id="profile">Profile</button>
+    </div>
+    <div class="profile_data">
+        <span class="fullName">Name</span>
+        <span class="userName">Username</span>
+        <span class="gmail">Gmail</span>
+        <span class="phone">Gmail</span>
+        <span class="gender">Gmail</span>
+        <span class="dob">Gmail</span>
+        <button id="history">History</button>
+        <button id="logout">Logout</button>
+    </div>
+    <div id="showHistory">
+        <div class="hishead">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>History</span>
+        </div>
+        <div id="addHistory">
+        </div>
+    </div>
+    
+    <div id="search">
+        <label for="inp-word">Enter a word:</label>
+            <input type="text" id="inp-word" placeholder="Type here..." autocomplete="off">
+            <button id="search-btn"> <i class="fas fa-search"></i></button>
+    </div>
+    <div id="suggestions"></div>
+    <div id="result"></div>
+    <div class="spinner" id="loadingSpinner" style="display: none;"></div>
+    <audio id="sound"></audio>
+    <script src="loggedin.js" type="module"></script>
+    <script src="dictionary.js"></script>
+        
+</body>
+</html>
